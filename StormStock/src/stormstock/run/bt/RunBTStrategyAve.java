@@ -1,17 +1,19 @@
-package stormstock.analysis;
+package stormstock.run.bt;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
-import java.util.Collections;
 
+import stormstock.analysis.ANLStock;
+import stormstock.analysis.ANLStockDayKData;
+import stormstock.analysis.ANLDataProvider;
 import stormstock.data.DataEngine;
 import stormstock.data.DataWebStockAllList.StockItem;
-import stormstock.data.DataWebStockDayK.DayKData;
 
-public class ANLPolicyAve {
+public class RunBTStrategyAve {
 	public static Formatter fmt = new Formatter(System.out);
 	public static String strLogName = "ANLPolicyAve.txt";
 	public static float fStopProfit = 1.0f;  //Ö¹Ó¯µã
@@ -320,7 +322,7 @@ public class ANLPolicyAve {
 	 * */
 	public static void analyzeOne(String id,List<BounceData> bounceList,int nAveOfDays,boolean bCalToday)
 	{
-		ANLStock cANLStock = ANLStockPool.getANLStock(id);
+		ANLStock cANLStock = ANLDataProvider.getANLStock(id);
 		if(null == cANLStock)
 		{
 			return;
